@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominos.Web", "Dominos.Web\Dominos.Web.csproj", "{404EFF70-9975-4404-A2CF-03192C61F101}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{5CF4AEDB-0607-4DAB-8C6F-2ECB056529AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominos.Core", "Libraries\Dominos.Core\Dominos.Core.csproj", "{65D53FC1-444D-4819-809C-2A7CFC4E0BB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominos.Infrastructure", "Libraries\Dominos.Infrastructure\Dominos.Infrastructure.csproj", "{80A00C28-85BA-4A21-A693-0F2C86B8025F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{404EFF70-9975-4404-A2CF-03192C61F101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404EFF70-9975-4404-A2CF-03192C61F101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404EFF70-9975-4404-A2CF-03192C61F101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404EFF70-9975-4404-A2CF-03192C61F101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D53FC1-444D-4819-809C-2A7CFC4E0BB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D53FC1-444D-4819-809C-2A7CFC4E0BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D53FC1-444D-4819-809C-2A7CFC4E0BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D53FC1-444D-4819-809C-2A7CFC4E0BB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80A00C28-85BA-4A21-A693-0F2C86B8025F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80A00C28-85BA-4A21-A693-0F2C86B8025F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80A00C28-85BA-4A21-A693-0F2C86B8025F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80A00C28-85BA-4A21-A693-0F2C86B8025F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{65D53FC1-444D-4819-809C-2A7CFC4E0BB2} = {5CF4AEDB-0607-4DAB-8C6F-2ECB056529AF}
+		{80A00C28-85BA-4A21-A693-0F2C86B8025F} = {5CF4AEDB-0607-4DAB-8C6F-2ECB056529AF}
+	EndGlobalSection
+EndGlobal

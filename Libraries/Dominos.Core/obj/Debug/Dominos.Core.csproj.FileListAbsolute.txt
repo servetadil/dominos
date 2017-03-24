@@ -1,0 +1,12 @@
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\obj\Debug\Dominos.Core.csprojResolveAssemblyReference.cache
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\Dominos.Core.dll.config
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\Dominos.Core.dll
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\Dominos.Core.pdb
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\EntityFramework.dll
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\PagedList.dll
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\EntityFramework.xml
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\PagedList.xml
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\obj\Debug\Dominos.Core.dll
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\obj\Debug\Dominos.Core.pdb

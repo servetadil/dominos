@@ -1,4 +1,3 @@
-C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\obj\Debug\Dominos.Core.csprojResolveAssemblyReference.cache
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\Dominos.Core.dll.config
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\Dominos.Core.dll
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\Dominos.Core.pdb
@@ -8,5 +7,9 @@ C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.C
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\EntityFramework.xml
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\bin\Debug\PagedList.xml
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\obj\Debug\Dominos.Core.csprojResolveAssemblyReference.cache
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\obj\Debug\Dominos.Core.Migrations.P_SC_M.resources
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\obj\Debug\Dominos.Core.Migrations.Product_Title_Type_Change.resources
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\obj\Debug\Dominos.Core.csproj.GenerateResource.Cache
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\obj\Debug\Dominos.Core.dll
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Core\obj\Debug\Dominos.Core.pdb

@@ -16,6 +16,10 @@ namespace Dominos.Core.Data
     public class DbObjectContext : DbContext, IDbContext
     {
         public DbSet<User> User { get; set; }
+        public DbSet<Media> Media { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
+
 
         public DbObjectContext()
            : base("name=DbObjectContext")

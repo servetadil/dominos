@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\AdminViewModel.cs" />
+    <Compile Include="Base\BaseService.cs" />
+    <Compile Include="Base\IBaseService.cs" />
     <Compile Include="Data\DbObjectContext.cs" />
     <Compile Include="Domain\Media.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\ShoppingCart.cs" />
     <Compile Include="Domain\User.cs" />
+    <Compile Include="Migrations\201703241849311_P_SC_M.cs" />
+    <Compile Include="Migrations\201703241849311_P_SC_M.Designer.cs">
+      <DependentUpon>201703241849311_P_SC_M.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703241915568_Product_Title_Type_Change.cs" />
+    <Compile Include="Migrations\201703241915568_Product_Title_Type_Change.Designer.cs">
+      <DependentUpon>201703241915568_Product_Title_Type_Change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseEntity.cs" />
@@ -68,6 +80,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703241849311_P_SC_M.resx">
+      <DependentUpon>201703241849311_P_SC_M.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703241915568_Product_Title_Type_Change.resx">
+      <DependentUpon>201703241915568_Product_Title_Type_Change.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

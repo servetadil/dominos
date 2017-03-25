@@ -1,9 +1,9 @@
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\bin\Debug\Dominos.Infrastructure.dll
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\bin\Debug\Dominos.Infrastructure.pdb
-C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\obj\Debug\Dominos.Infrastructure.csprojResolveAssemblyReference.cache
-C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\obj\Debug\Dominos.Infrastructure.dll
-C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\obj\Debug\Dominos.Infrastructure.pdb
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\bin\Debug\Dominos.Core.dll
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\bin\Debug\EntityFramework.dll
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\bin\Debug\Dominos.Core.pdb
 C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\bin\Debug\EntityFramework.xml
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\obj\Debug\Dominos.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\obj\Debug\Dominos.Infrastructure.dll
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Libraries\Dominos.Infrastructure\obj\Debug\Dominos.Infrastructure.pdb

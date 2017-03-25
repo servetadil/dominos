@@ -1,0 +1,6 @@
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Dominos.API\bin\Dominos.API.dll.config
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Dominos.API\bin\Dominos.API.dll
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Dominos.API\bin\Dominos.API.pdb
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Dominos.API\obj\Debug\Dominos.API.csprojResolveAssemblyReference.cache
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Dominos.API\obj\Debug\Dominos.API.dll
+C:\Users\tugru\Documents\Visual Studio 2015\Projects\Dominos\Dominos.API\obj\Debug\Dominos.API.pdb

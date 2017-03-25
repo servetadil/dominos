@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Dominos.Admin.Models.ProductModel>
+
+@{
+    ViewBag.Title = "Product Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product Management</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", new { id = item.Id })">X</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

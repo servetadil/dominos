@@ -1,4 +1,5 @@
-﻿using Dominos.Core.Domain;
+﻿using Dominos.Core.Base;
+using Dominos.Core.Domain;
 using Dominos.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -8,22 +9,20 @@ using System.Threading.Tasks;
 
 namespace Dominos.Infrastructure.Service
 {
-    public class UserService : IUserService
+    public class UserService : BaseService<User>, IUserService
     {
-
-        private IRepository<User> _userRepository;
-        public UserService(IRepository<User> userRepository)
+        
+        public UserService(IRepository<User> userRepository) : base(userRepository)
         {
-            _userRepository = userRepository;
         } 
         public User Login(string email, string password)
         {
             // TODO: zaman kalırsa auth yapılacak.
-            return _userRepository.Table.FirstOrDefault();
+            return BaseRepository.Table.FirstOrDefault();
         }
     }
 
-    public interface IUserService
+    public interface IUserService : IBaseService<User>
     {
         User Login(string email, string password);
     }

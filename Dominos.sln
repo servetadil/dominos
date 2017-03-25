@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominos.Core", "Libraries\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominos.Infrastructure", "Libraries\Dominos.Infrastructure\Dominos.Infrastructure.csproj", "{80A00C28-85BA-4A21-A693-0F2C86B8025F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominos.Admin", "Dominos.Admin\Dominos.Admin.csproj", "{0C3A01D6-06AF-4C2A-8252-18440D7298D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominos.WCFService", "Dominos.API\Dominos.WCFService.csproj", "{1F419EC2-C7A1-4445-8A59-237034CD0A05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,14 @@ Global
 		{80A00C28-85BA-4A21-A693-0F2C86B8025F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80A00C28-85BA-4A21-A693-0F2C86B8025F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80A00C28-85BA-4A21-A693-0F2C86B8025F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C3A01D6-06AF-4C2A-8252-18440D7298D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C3A01D6-06AF-4C2A-8252-18440D7298D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C3A01D6-06AF-4C2A-8252-18440D7298D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C3A01D6-06AF-4C2A-8252-18440D7298D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F419EC2-C7A1-4445-8A59-237034CD0A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F419EC2-C7A1-4445-8A59-237034CD0A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F419EC2-C7A1-4445-8A59-237034CD0A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F419EC2-C7A1-4445-8A59-237034CD0A05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

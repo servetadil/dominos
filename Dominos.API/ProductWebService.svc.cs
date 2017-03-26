@@ -31,6 +31,7 @@ namespace Dominos.WCFService
             var x = _productService.GetProducts()
                 .Select(s => new ProductDTO()
                 {
+                    Id = s.Id,
                     Title = s.Title,
                     Price = s.Price,
                     ImageId = s.ImageId

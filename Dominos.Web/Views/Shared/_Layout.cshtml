@@ -9,34 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Dominos</title>
-    <link href="_assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="_assets/css/shop-item.css" rel="stylesheet">
+    <link href="~/_assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/_assets/css/shop-item.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Dominos</a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">Sepetim</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.container -->
-    </nav>
+    @{Html.RenderPartial("_Nav");}
 
     <!-- Page Content -->
     <div class="container">
@@ -61,8 +40,8 @@
     </div>
     <!-- /.container -->
     <!-- jQuery -->
-    <script src="_assets/js/jquery.js"></script>
-    <script src="_assets/js/bootstrap.min.js"></script>
+    <script src="~/_assets/js/jquery.js"></script>
+    <script src="~/_assets/js/bootstrap.min.js"></script>
 
 </body>
 

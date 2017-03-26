@@ -19,6 +19,13 @@ namespace Dominos.Web.Models
                 return string.Format("{0:C}", Price);
             }
         }
+        public string Url
+        {
+            get
+            {
+                return string.Format("/Product/Detail/{0}", Id);
+            }
+        }
 
         public int? ImageId { get; set; }
 

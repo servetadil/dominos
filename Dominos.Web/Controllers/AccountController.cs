@@ -10,6 +10,12 @@ namespace Dominos.Web.Controllers
 {
     public class AccountController : Controller
     {
+
+        private ProductWebService _productWebService;
+        public AccountController()
+        {
+            _productWebService = new ProductWebService();
+        }
         // GET: Account
         public ActionResult Login()
         {
@@ -20,12 +26,13 @@ namespace Dominos.Web.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
-            if (model.Email == "tugrul@alpdogan.co" && model.Password == "alpdogan")
+            var user = _productWebService.Login(model.Email, model.Password);
+            if (user.Success)
             {
                 WorkContext.CurrentUser = new UserModel()
                 {
-                    Id = 1,
-                    Email = "tugrul@alpdogan.co"
+                    Id = user.UserId,
+                    Email = user.Email
                 };
             }
             return RedirectToAction("Index", "Home");

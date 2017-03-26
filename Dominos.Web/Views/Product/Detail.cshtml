@@ -3,18 +3,66 @@
 <div class="col-md-5">
     <div class="thumbnail">
         <img class="img-responsive" src="@Model.ImageUrl" alt="">
-        
+
     </div>
 </div>
 <div class="col-md-6">
     <div class="caption-full">
-        <h1 class="mt-30">
-            <a href="#">@Model.Title</a>
-        </h1>
-        <p class="mt-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et erat vel elit tristique pharetra. Aliquam scelerisque tellus purus, a rhoncus augue euismod ac. Praesent dapibus mi at massa ultricies fringilla. Suspendisse maximus ex a enim gravida ornare. Maecenas mattis ornare venenatis. Integer euismod, orci at tristique faucibus, quam felis sollicitudin leo, nec pulvinar arcu erat ac velit. Vivamus finibus dolor et orci hendrerit vehicula. Aliquam erat volutpat. Praesent sed maximus metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse est mauris, convallis vel bibendum et, pretium nec orci. Nunc euismod arcu ut laoreet viverra.</p>
-        <a href="#" class="btn btn-default btn-lg mt-30">
-            <span class="glyphicon glyphicon-shopping-cart"></span> Sepete Ekle
-        </a>
-        <h2 class="pull-right mt-35">@Model.FormattedPrice</h2>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>
+                    <a href="#">@Model.Title</a>
+                </h1>
+                <p class="mt-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et erat vel elit tristique pharetra. Aliquam scelerisque tellus purus, a rhoncus augue euismod ac. Praesent dapibus mi at massa ultricies fringilla. Suspendisse maximus ex a enim gravida ornare. Maecenas mattis ornare venenatis. Integer euismod, orci at tristique faucibus, quam felis sollicitudin leo, nec pulvinar arcu erat ac velit. Vivamus finibus dolor et orci hendrerit vehicula. Aliquam erat volutpat. Praesent sed maximus metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse est mauris, convallis vel bibendum et, pretium nec orci. Nunc euismod arcu ut laoreet viverra.</p>
+            </div>
+        </div>
+        <div class="row mt-35">
+            <div class="col-md-5">
+                <div class="input-group input-group-lg">
+                    <input type="number" class="form-control cart-quantity" placeholder="" value="1">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default addToBasket" type="button">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Sepete Ekle
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <span class="detail-price">@Model.FormattedPrice</span>
+            </div>
+        </div>
     </div>
 </div>
+
+
+@section script{
+
+    @if (Dominos.Web.Utility.WorkContext.IsAuthenticated)
+    {
+        <script>
+            $(function () {
+                $(".addToBasket").click(function () {
+                    var quantity = $(".cart-quantity").val();
+                    ShoppingCart.addToBasket(@Model.Id, quantity,
+                        function(data){
+                            if (data.Success) {
+                                location.href = '/ShoppingCart';
+                            }
+                        });
+                });
+            });
+        </script>
+    }
+    else
+    {
+        <script>
+            $(function () {
+                $(".addToBasket").click(function () {
+                    location.href = "/Account/Login";
+                });
+            });
+        </script>
+    }
+
+}

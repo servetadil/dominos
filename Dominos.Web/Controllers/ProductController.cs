@@ -1,4 +1,5 @@
 ﻿using Dominos.Web.Models;
+using Dominos.Web.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,15 +17,14 @@ namespace Dominos.Web.Controllers
         }
         public ActionResult Detail(int id)
         {
-            var product = _productWebService.GetProductById(id, true);
+            var product = _productWebService.GetProductById(id);
             var model = new ProductModel()
             {
                 Id = product.Id,
                 ImageId = product.ImageId,
                 Price = product.Price,
-                Title = product.Title
+                Title = product.Title,
             };
-
             return View(model);
         }
     }

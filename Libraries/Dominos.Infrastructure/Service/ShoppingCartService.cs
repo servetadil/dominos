@@ -60,6 +60,32 @@ namespace Dominos.Infrastructure.Service
             }
             return false;
         }
+
+        public bool SetShoppingCartQuantity(int shoppingCartItemId, int quantity)
+        {
+            try
+            {
+                var cart = BaseRepository.Table.FirstOrDefault(p => p.Id == shoppingCartItemId);
+                if (cart != null)
+                {
+                    if (quantity != 0)
+                    {
+                        cart.Quantity = quantity;
+                        BaseRepository.Update(cart);
+                    }
+                    else
+                    {
+                        BaseRepository.Delete(cart);
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+            return false;
+        }
         public List<ShoppingCart> GetShoppingCartItems(int userId)
         {
             return BaseRepository.Table.Where(p => p.UserId == userId).ToList();
@@ -72,6 +98,8 @@ namespace Dominos.Infrastructure.Service
     {
         bool AddShoppingCart(int productId, int userId, int quantity);
         bool SetShoppingCartQuantity(int productId, int userId, int quantity);
+        bool SetShoppingCartQuantity(int shoppingCartItemId, int quantity);
+
         List<ShoppingCart> GetShoppingCartItems(int userId);
     }
 }

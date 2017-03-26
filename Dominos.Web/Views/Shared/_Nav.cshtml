@@ -12,13 +12,10 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                @if (Dominos.Web.Utility.WorkContext.IsAuthenticated)
-                {
-                    <li>
-                        <a href="#">Sepetim <span class="cart-quantity">(0)</span></a>
-                    </li>
-                }
-                else
+                <li>
+                    <a href="@Url.Action("Index", "ShoppingCart")">Sepetim</a>
+                </li>
+                @if (!Dominos.Web.Utility.WorkContext.IsAuthenticated)
                 {
                     <li>
                         <a href="@Url.Action("Login","Account")">Giriş Yap</a>

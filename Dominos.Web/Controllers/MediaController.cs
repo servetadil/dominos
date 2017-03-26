@@ -22,7 +22,7 @@ namespace Dominos.Web.Controllers
         [OutputCache(Duration = 2147483647)]
         public ActionResult View(int id)
         {
-            var medium = _productWebService.GetProductImageWithoutBinary(id, true);
+            var medium = _productWebService.GetProductImageWithoutBinary(id);
             if (medium != null)
             {
                 var fileName = Path.GetFileNameWithoutExtension(medium.FileName);
@@ -32,7 +32,7 @@ namespace Dominos.Web.Controllers
                 {
                     return RedirectPermanent(path);
                 }
-                medium = _productWebService.GetProductImageById(id, true);
+                medium = _productWebService.GetProductImageById(id);
                 byte[] fileByte = medium.FileBinary;
                 string contentType = medium.FileContentType;
                 System.IO.File.WriteAllBytes(serverPath, fileByte);

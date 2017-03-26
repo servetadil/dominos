@@ -11,19 +11,23 @@ using System.Text;
 
 namespace Dominos.WCFService
 {
+
     public class ProductWebService : IProductWebService
     {
         private IProductService _productService;
         private IShoppingCartService _shoppingCartService;
         private IMediumService _mediumService;
+        private IUserService _userService;
 
         public ProductWebService(IProductService productService,
             IShoppingCartService shoppingCartService,
-            IMediumService mediumService)
+            IMediumService mediumService,
+            IUserService userService)
         {
             _productService = productService;
             _shoppingCartService = shoppingCartService;
             _mediumService = mediumService;
+            _userService = userService;
         }
 
         public List<ProductDTO> GetProducts()
@@ -57,16 +61,13 @@ namespace Dominos.WCFService
                 .Select(s =>
                         new ShoppingCartDTO
                         {
+                            Id = s.Id,
                             ProductId = s.ProductId,
                             UserId = s.UserId,
                             Quantity = s.Quantity,
-                            Product = new ProductDTO()
-                            {
-                                Id = s.ProductId,
-                                Title = s.Product.Title,
-                                Price = s.Product.Price,
-                                ImageId = s.Product.ImageId
-                            }
+                            ProductPrice = s.Product.Price,
+                            ProductTitle = s.Product.Title,
+                            ProductImageId = s.Product.ImageId
                         }
                     ).ToList();
 
@@ -83,10 +84,15 @@ namespace Dominos.WCFService
             return _shoppingCartService.SetShoppingCartQuantity(productId, userId, quantity);
         }
 
+        public bool SetShoppingCartQuantityById(int shoppingCartItemId, int quantity)
+        {
+            return _shoppingCartService.SetShoppingCartQuantity(shoppingCartItemId, quantity);
+        }
+
         public MediaDTO GetProductImageById(int imageId)
         {
             var media = _mediumService.GetById(imageId);
-            if(media != null)
+            if (media != null)
             {
                 var dto = new MediaDTO()
                 {
@@ -121,5 +127,19 @@ namespace Dominos.WCFService
             return null;
         }
 
+        public UserDTO Login(string email, string password)
+        {
+            var user = _userService.Login(email, password);
+            if(user != null)
+            {
+                return new UserDTO()
+                {
+                    Success = true,
+                    UserId = user.Id,
+                    Email = user.Email,
+                };
+            }
+            return new UserDTO();
+        }
     }
 }

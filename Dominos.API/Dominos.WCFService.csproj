@@ -86,6 +86,7 @@
     <Compile Include="DTO\MediaDTO.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="DTO\ShoppingCartDTO.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

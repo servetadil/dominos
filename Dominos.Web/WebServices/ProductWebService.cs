@@ -37,9 +37,13 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     
     private System.Threading.SendOrPostCallback SetShoppingCartQuantityOperationCompleted;
     
+    private System.Threading.SendOrPostCallback SetShoppingCartQuantityByIdOperationCompleted;
+    
     private System.Threading.SendOrPostCallback GetProductImageByIdOperationCompleted;
     
     private System.Threading.SendOrPostCallback GetProductImageWithoutBinaryOperationCompleted;
+    
+    private System.Threading.SendOrPostCallback LoginOperationCompleted;
     
     /// <remarks/>
     public ProductWebService() {
@@ -62,15 +66,19 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     public event SetShoppingCartQuantityCompletedEventHandler SetShoppingCartQuantityCompleted;
     
     /// <remarks/>
+    public event SetShoppingCartQuantityByIdCompletedEventHandler SetShoppingCartQuantityByIdCompleted;
+    
+    /// <remarks/>
     public event GetProductImageByIdCompletedEventHandler GetProductImageByIdCompleted;
     
     /// <remarks/>
     public event GetProductImageWithoutBinaryCompletedEventHandler GetProductImageWithoutBinaryCompleted;
     
     /// <remarks/>
+    public event LoginCompletedEventHandler LoginCompleted;
+    
+    /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IProductWebService/GetProducts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-    [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Dominos.WCFService.DTO")]
     public ProductDTO[] GetProducts() {
         object[] results = this.Invoke("GetProducts", new object[0]);
         return ((ProductDTO[])(results[0]));
@@ -109,19 +117,16 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     
     /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IProductWebService/GetProductById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public ProductDTO GetProductById(int id, [System.Xml.Serialization.XmlIgnoreAttribute()] bool idSpecified) {
+    public ProductDTO GetProductById(int id) {
         object[] results = this.Invoke("GetProductById", new object[] {
-                    id,
-                    idSpecified});
+                    id});
         return ((ProductDTO)(results[0]));
     }
     
     /// <remarks/>
-    public System.IAsyncResult BeginGetProductById(int id, bool idSpecified, System.AsyncCallback callback, object asyncState) {
+    public System.IAsyncResult BeginGetProductById(int id, System.AsyncCallback callback, object asyncState) {
         return this.BeginInvoke("GetProductById", new object[] {
-                    id,
-                    idSpecified}, callback, asyncState);
+                    id}, callback, asyncState);
     }
     
     /// <remarks/>
@@ -131,18 +136,17 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     }
     
     /// <remarks/>
-    public void GetProductByIdAsync(int id, bool idSpecified) {
-        this.GetProductByIdAsync(id, idSpecified, null);
+    public void GetProductByIdAsync(int id) {
+        this.GetProductByIdAsync(id, null);
     }
     
     /// <remarks/>
-    public void GetProductByIdAsync(int id, bool idSpecified, object userState) {
+    public void GetProductByIdAsync(int id, object userState) {
         if ((this.GetProductByIdOperationCompleted == null)) {
             this.GetProductByIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProductByIdOperationCompleted);
         }
         this.InvokeAsync("GetProductById", new object[] {
-                    id,
-                    idSpecified}, this.GetProductByIdOperationCompleted, userState);
+                    id}, this.GetProductByIdOperationCompleted, userState);
     }
     
     private void OnGetProductByIdOperationCompleted(object arg) {
@@ -154,20 +158,16 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     
     /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IProductWebService/GetShoppingCartItems", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-    [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Dominos.WCFService.DTO")]
-    public ShoppingCartDTO[] GetShoppingCartItems(int userId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool userIdSpecified) {
+    public ShoppingCartDTO[] GetShoppingCartItems(int userId) {
         object[] results = this.Invoke("GetShoppingCartItems", new object[] {
-                    userId,
-                    userIdSpecified});
+                    userId});
         return ((ShoppingCartDTO[])(results[0]));
     }
     
     /// <remarks/>
-    public System.IAsyncResult BeginGetShoppingCartItems(int userId, bool userIdSpecified, System.AsyncCallback callback, object asyncState) {
+    public System.IAsyncResult BeginGetShoppingCartItems(int userId, System.AsyncCallback callback, object asyncState) {
         return this.BeginInvoke("GetShoppingCartItems", new object[] {
-                    userId,
-                    userIdSpecified}, callback, asyncState);
+                    userId}, callback, asyncState);
     }
     
     /// <remarks/>
@@ -177,18 +177,17 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     }
     
     /// <remarks/>
-    public void GetShoppingCartItemsAsync(int userId, bool userIdSpecified) {
-        this.GetShoppingCartItemsAsync(userId, userIdSpecified, null);
+    public void GetShoppingCartItemsAsync(int userId) {
+        this.GetShoppingCartItemsAsync(userId, null);
     }
     
     /// <remarks/>
-    public void GetShoppingCartItemsAsync(int userId, bool userIdSpecified, object userState) {
+    public void GetShoppingCartItemsAsync(int userId, object userState) {
         if ((this.GetShoppingCartItemsOperationCompleted == null)) {
             this.GetShoppingCartItemsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetShoppingCartItemsOperationCompleted);
         }
         this.InvokeAsync("GetShoppingCartItems", new object[] {
-                    userId,
-                    userIdSpecified}, this.GetShoppingCartItemsOperationCompleted, userState);
+                    userId}, this.GetShoppingCartItemsOperationCompleted, userState);
     }
     
     private void OnGetShoppingCartItemsOperationCompleted(object arg) {
@@ -200,53 +199,42 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     
     /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IProductWebService/AddShoppingCart", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    public void AddShoppingCart(int productId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool productIdSpecified, int userId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool userIdSpecified, int quantity, [System.Xml.Serialization.XmlIgnoreAttribute()] bool quantitySpecified, out bool AddShoppingCartResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool AddShoppingCartResultSpecified) {
+    public bool AddShoppingCart(int productId, int userId, int quantity) {
         object[] results = this.Invoke("AddShoppingCart", new object[] {
                     productId,
-                    productIdSpecified,
                     userId,
-                    userIdSpecified,
-                    quantity,
-                    quantitySpecified});
-        AddShoppingCartResult = ((bool)(results[0]));
-        AddShoppingCartResultSpecified = ((bool)(results[1]));
+                    quantity});
+        return ((bool)(results[0]));
     }
     
     /// <remarks/>
-    public System.IAsyncResult BeginAddShoppingCart(int productId, bool productIdSpecified, int userId, bool userIdSpecified, int quantity, bool quantitySpecified, System.AsyncCallback callback, object asyncState) {
+    public System.IAsyncResult BeginAddShoppingCart(int productId, int userId, int quantity, System.AsyncCallback callback, object asyncState) {
         return this.BeginInvoke("AddShoppingCart", new object[] {
                     productId,
-                    productIdSpecified,
                     userId,
-                    userIdSpecified,
-                    quantity,
-                    quantitySpecified}, callback, asyncState);
+                    quantity}, callback, asyncState);
     }
     
     /// <remarks/>
-    public void EndAddShoppingCart(System.IAsyncResult asyncResult, out bool AddShoppingCartResult, out bool AddShoppingCartResultSpecified) {
+    public bool EndAddShoppingCart(System.IAsyncResult asyncResult) {
         object[] results = this.EndInvoke(asyncResult);
-        AddShoppingCartResult = ((bool)(results[0]));
-        AddShoppingCartResultSpecified = ((bool)(results[1]));
+        return ((bool)(results[0]));
     }
     
     /// <remarks/>
-    public void AddShoppingCartAsync(int productId, bool productIdSpecified, int userId, bool userIdSpecified, int quantity, bool quantitySpecified) {
-        this.AddShoppingCartAsync(productId, productIdSpecified, userId, userIdSpecified, quantity, quantitySpecified, null);
+    public void AddShoppingCartAsync(int productId, int userId, int quantity) {
+        this.AddShoppingCartAsync(productId, userId, quantity, null);
     }
     
     /// <remarks/>
-    public void AddShoppingCartAsync(int productId, bool productIdSpecified, int userId, bool userIdSpecified, int quantity, bool quantitySpecified, object userState) {
+    public void AddShoppingCartAsync(int productId, int userId, int quantity, object userState) {
         if ((this.AddShoppingCartOperationCompleted == null)) {
             this.AddShoppingCartOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddShoppingCartOperationCompleted);
         }
         this.InvokeAsync("AddShoppingCart", new object[] {
                     productId,
-                    productIdSpecified,
                     userId,
-                    userIdSpecified,
-                    quantity,
-                    quantitySpecified}, this.AddShoppingCartOperationCompleted, userState);
+                    quantity}, this.AddShoppingCartOperationCompleted, userState);
     }
     
     private void OnAddShoppingCartOperationCompleted(object arg) {
@@ -258,53 +246,42 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     
     /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IProductWebService/SetShoppingCartQuantity", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    public void SetShoppingCartQuantity(int productId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool productIdSpecified, int userId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool userIdSpecified, int quantity, [System.Xml.Serialization.XmlIgnoreAttribute()] bool quantitySpecified, out bool SetShoppingCartQuantityResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool SetShoppingCartQuantityResultSpecified) {
+    public bool SetShoppingCartQuantity(int productId, int userId, int quantity) {
         object[] results = this.Invoke("SetShoppingCartQuantity", new object[] {
                     productId,
-                    productIdSpecified,
                     userId,
-                    userIdSpecified,
-                    quantity,
-                    quantitySpecified});
-        SetShoppingCartQuantityResult = ((bool)(results[0]));
-        SetShoppingCartQuantityResultSpecified = ((bool)(results[1]));
+                    quantity});
+        return ((bool)(results[0]));
     }
     
     /// <remarks/>
-    public System.IAsyncResult BeginSetShoppingCartQuantity(int productId, bool productIdSpecified, int userId, bool userIdSpecified, int quantity, bool quantitySpecified, System.AsyncCallback callback, object asyncState) {
+    public System.IAsyncResult BeginSetShoppingCartQuantity(int productId, int userId, int quantity, System.AsyncCallback callback, object asyncState) {
         return this.BeginInvoke("SetShoppingCartQuantity", new object[] {
                     productId,
-                    productIdSpecified,
                     userId,
-                    userIdSpecified,
-                    quantity,
-                    quantitySpecified}, callback, asyncState);
+                    quantity}, callback, asyncState);
     }
     
     /// <remarks/>
-    public void EndSetShoppingCartQuantity(System.IAsyncResult asyncResult, out bool SetShoppingCartQuantityResult, out bool SetShoppingCartQuantityResultSpecified) {
+    public bool EndSetShoppingCartQuantity(System.IAsyncResult asyncResult) {
         object[] results = this.EndInvoke(asyncResult);
-        SetShoppingCartQuantityResult = ((bool)(results[0]));
-        SetShoppingCartQuantityResultSpecified = ((bool)(results[1]));
+        return ((bool)(results[0]));
     }
     
     /// <remarks/>
-    public void SetShoppingCartQuantityAsync(int productId, bool productIdSpecified, int userId, bool userIdSpecified, int quantity, bool quantitySpecified) {
-        this.SetShoppingCartQuantityAsync(productId, productIdSpecified, userId, userIdSpecified, quantity, quantitySpecified, null);
+    public void SetShoppingCartQuantityAsync(int productId, int userId, int quantity) {
+        this.SetShoppingCartQuantityAsync(productId, userId, quantity, null);
     }
     
     /// <remarks/>
-    public void SetShoppingCartQuantityAsync(int productId, bool productIdSpecified, int userId, bool userIdSpecified, int quantity, bool quantitySpecified, object userState) {
+    public void SetShoppingCartQuantityAsync(int productId, int userId, int quantity, object userState) {
         if ((this.SetShoppingCartQuantityOperationCompleted == null)) {
             this.SetShoppingCartQuantityOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetShoppingCartQuantityOperationCompleted);
         }
         this.InvokeAsync("SetShoppingCartQuantity", new object[] {
                     productId,
-                    productIdSpecified,
                     userId,
-                    userIdSpecified,
-                    quantity,
-                    quantitySpecified}, this.SetShoppingCartQuantityOperationCompleted, userState);
+                    quantity}, this.SetShoppingCartQuantityOperationCompleted, userState);
     }
     
     private void OnSetShoppingCartQuantityOperationCompleted(object arg) {
@@ -315,20 +292,61 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     }
     
     /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IProductWebService/SetShoppingCartQuantityById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    public bool SetShoppingCartQuantityById(int shoppingCartItemId, int quantity) {
+        object[] results = this.Invoke("SetShoppingCartQuantityById", new object[] {
+                    shoppingCartItemId,
+                    quantity});
+        return ((bool)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginSetShoppingCartQuantityById(int shoppingCartItemId, int quantity, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("SetShoppingCartQuantityById", new object[] {
+                    shoppingCartItemId,
+                    quantity}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public bool EndSetShoppingCartQuantityById(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((bool)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void SetShoppingCartQuantityByIdAsync(int shoppingCartItemId, int quantity) {
+        this.SetShoppingCartQuantityByIdAsync(shoppingCartItemId, quantity, null);
+    }
+    
+    /// <remarks/>
+    public void SetShoppingCartQuantityByIdAsync(int shoppingCartItemId, int quantity, object userState) {
+        if ((this.SetShoppingCartQuantityByIdOperationCompleted == null)) {
+            this.SetShoppingCartQuantityByIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetShoppingCartQuantityByIdOperationCompleted);
+        }
+        this.InvokeAsync("SetShoppingCartQuantityById", new object[] {
+                    shoppingCartItemId,
+                    quantity}, this.SetShoppingCartQuantityByIdOperationCompleted, userState);
+    }
+    
+    private void OnSetShoppingCartQuantityByIdOperationCompleted(object arg) {
+        if ((this.SetShoppingCartQuantityByIdCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.SetShoppingCartQuantityByIdCompleted(this, new SetShoppingCartQuantityByIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IProductWebService/GetProductImageById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public MediaDTO GetProductImageById(int imageId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool imageIdSpecified) {
+    public MediaDTO GetProductImageById(int imageId) {
         object[] results = this.Invoke("GetProductImageById", new object[] {
-                    imageId,
-                    imageIdSpecified});
+                    imageId});
         return ((MediaDTO)(results[0]));
     }
     
     /// <remarks/>
-    public System.IAsyncResult BeginGetProductImageById(int imageId, bool imageIdSpecified, System.AsyncCallback callback, object asyncState) {
+    public System.IAsyncResult BeginGetProductImageById(int imageId, System.AsyncCallback callback, object asyncState) {
         return this.BeginInvoke("GetProductImageById", new object[] {
-                    imageId,
-                    imageIdSpecified}, callback, asyncState);
+                    imageId}, callback, asyncState);
     }
     
     /// <remarks/>
@@ -338,18 +356,17 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     }
     
     /// <remarks/>
-    public void GetProductImageByIdAsync(int imageId, bool imageIdSpecified) {
-        this.GetProductImageByIdAsync(imageId, imageIdSpecified, null);
+    public void GetProductImageByIdAsync(int imageId) {
+        this.GetProductImageByIdAsync(imageId, null);
     }
     
     /// <remarks/>
-    public void GetProductImageByIdAsync(int imageId, bool imageIdSpecified, object userState) {
+    public void GetProductImageByIdAsync(int imageId, object userState) {
         if ((this.GetProductImageByIdOperationCompleted == null)) {
             this.GetProductImageByIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProductImageByIdOperationCompleted);
         }
         this.InvokeAsync("GetProductImageById", new object[] {
-                    imageId,
-                    imageIdSpecified}, this.GetProductImageByIdOperationCompleted, userState);
+                    imageId}, this.GetProductImageByIdOperationCompleted, userState);
     }
     
     private void OnGetProductImageByIdOperationCompleted(object arg) {
@@ -361,19 +378,16 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     
     /// <remarks/>
     [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IProductWebService/GetProductImageWithoutBinary", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-    [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public MediaDTO GetProductImageWithoutBinary(int imageId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool imageIdSpecified) {
+    public MediaDTO GetProductImageWithoutBinary(int imageId) {
         object[] results = this.Invoke("GetProductImageWithoutBinary", new object[] {
-                    imageId,
-                    imageIdSpecified});
+                    imageId});
         return ((MediaDTO)(results[0]));
     }
     
     /// <remarks/>
-    public System.IAsyncResult BeginGetProductImageWithoutBinary(int imageId, bool imageIdSpecified, System.AsyncCallback callback, object asyncState) {
+    public System.IAsyncResult BeginGetProductImageWithoutBinary(int imageId, System.AsyncCallback callback, object asyncState) {
         return this.BeginInvoke("GetProductImageWithoutBinary", new object[] {
-                    imageId,
-                    imageIdSpecified}, callback, asyncState);
+                    imageId}, callback, asyncState);
     }
     
     /// <remarks/>
@@ -383,24 +397,67 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
     }
     
     /// <remarks/>
-    public void GetProductImageWithoutBinaryAsync(int imageId, bool imageIdSpecified) {
-        this.GetProductImageWithoutBinaryAsync(imageId, imageIdSpecified, null);
+    public void GetProductImageWithoutBinaryAsync(int imageId) {
+        this.GetProductImageWithoutBinaryAsync(imageId, null);
     }
     
     /// <remarks/>
-    public void GetProductImageWithoutBinaryAsync(int imageId, bool imageIdSpecified, object userState) {
+    public void GetProductImageWithoutBinaryAsync(int imageId, object userState) {
         if ((this.GetProductImageWithoutBinaryOperationCompleted == null)) {
             this.GetProductImageWithoutBinaryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProductImageWithoutBinaryOperationCompleted);
         }
         this.InvokeAsync("GetProductImageWithoutBinary", new object[] {
-                    imageId,
-                    imageIdSpecified}, this.GetProductImageWithoutBinaryOperationCompleted, userState);
+                    imageId}, this.GetProductImageWithoutBinaryOperationCompleted, userState);
     }
     
     private void OnGetProductImageWithoutBinaryOperationCompleted(object arg) {
         if ((this.GetProductImageWithoutBinaryCompleted != null)) {
             System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
             this.GetProductImageWithoutBinaryCompleted(this, new GetProductImageWithoutBinaryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+        }
+    }
+    
+    /// <remarks/>
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IProductWebService/Login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    public UserDTO Login(string email, string password) {
+        object[] results = this.Invoke("Login", new object[] {
+                    email,
+                    password});
+        return ((UserDTO)(results[0]));
+    }
+    
+    /// <remarks/>
+    public System.IAsyncResult BeginLogin(string email, string password, System.AsyncCallback callback, object asyncState) {
+        return this.BeginInvoke("Login", new object[] {
+                    email,
+                    password}, callback, asyncState);
+    }
+    
+    /// <remarks/>
+    public UserDTO EndLogin(System.IAsyncResult asyncResult) {
+        object[] results = this.EndInvoke(asyncResult);
+        return ((UserDTO)(results[0]));
+    }
+    
+    /// <remarks/>
+    public void LoginAsync(string email, string password) {
+        this.LoginAsync(email, password, null);
+    }
+    
+    /// <remarks/>
+    public void LoginAsync(string email, string password, object userState) {
+        if ((this.LoginOperationCompleted == null)) {
+            this.LoginOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoginOperationCompleted);
+        }
+        this.InvokeAsync("Login", new object[] {
+                    email,
+                    password}, this.LoginOperationCompleted, userState);
+    }
+    
+    private void OnLoginOperationCompleted(object arg) {
+        if ((this.LoginCompleted != null)) {
+            System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+            this.LoginCompleted(this, new LoginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
         }
     }
     
@@ -415,24 +472,18 @@ public partial class ProductWebService : System.Web.Services.Protocols.SoapHttpC
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Dominos.WCFService.DTO")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
 public partial class ProductDTO {
     
     private int idField;
     
-    private bool idFieldSpecified;
-    
-    private System.Nullable<int> imageIdField;
-    
-    private bool imageIdFieldSpecified;
-    
-    private string imageUrlField;
+    private string titleField;
     
     private decimal priceField;
     
-    private bool priceFieldSpecified;
+    private System.Nullable<int> imageIdField;
     
-    private string titleField;
+    private string imageUrlField;
     
     /// <remarks/>
     public int Id {
@@ -445,13 +496,22 @@ public partial class ProductDTO {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool IdSpecified {
+    public string Title {
         get {
-            return this.idFieldSpecified;
+            return this.titleField;
         }
         set {
-            this.idFieldSpecified = value;
+            this.titleField = value;
+        }
+    }
+    
+    /// <remarks/>
+    public decimal Price {
+        get {
+            return this.priceField;
+        }
+        set {
+            this.priceField = value;
         }
     }
     
@@ -467,56 +527,12 @@ public partial class ProductDTO {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool ImageIdSpecified {
-        get {
-            return this.imageIdFieldSpecified;
-        }
-        set {
-            this.imageIdFieldSpecified = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ImageUrl {
         get {
             return this.imageUrlField;
         }
         set {
             this.imageUrlField = value;
-        }
-    }
-    
-    /// <remarks/>
-    public decimal Price {
-        get {
-            return this.priceField;
-        }
-        set {
-            this.priceField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool PriceSpecified {
-        get {
-            return this.priceFieldSpecified;
-        }
-        set {
-            this.priceFieldSpecified = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public string Title {
-        get {
-            return this.titleField;
-        }
-        set {
-            this.titleField = value;
         }
     }
 }
@@ -526,27 +542,78 @@ public partial class ProductDTO {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Dominos.WCFService.DTO")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+public partial class UserDTO {
+    
+    private int userIdField;
+    
+    private string emailField;
+    
+    private bool successField;
+    
+    /// <remarks/>
+    public int UserId {
+        get {
+            return this.userIdField;
+        }
+        set {
+            this.userIdField = value;
+        }
+    }
+    
+    /// <remarks/>
+    public string Email {
+        get {
+            return this.emailField;
+        }
+        set {
+            this.emailField = value;
+        }
+    }
+    
+    /// <remarks/>
+    public bool Success {
+        get {
+            return this.successField;
+        }
+        set {
+            this.successField = value;
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.81.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
 public partial class MediaDTO {
-    
-    private byte[] fileBinaryField;
-    
-    private string fileContentTypeField;
-    
-    private string fileExtensionField;
-    
-    private string fileNameField;
-    
-    private int fileSizeField;
-    
-    private bool fileSizeFieldSpecified;
     
     private int idField;
     
-    private bool idFieldSpecified;
+    private byte[] fileBinaryField;
+    
+    private string fileNameField;
+    
+    private string fileExtensionField;
+    
+    private int fileSizeField;
+    
+    private string fileContentTypeField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)]
+    public int Id {
+        get {
+            return this.idField;
+        }
+        set {
+            this.idField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
     public byte[] FileBinary {
         get {
             return this.fileBinaryField;
@@ -557,35 +624,22 @@ public partial class MediaDTO {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public string FileContentType {
-        get {
-            return this.fileContentTypeField;
-        }
-        set {
-            this.fileContentTypeField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public string FileExtension {
-        get {
-            return this.fileExtensionField;
-        }
-        set {
-            this.fileExtensionField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string FileName {
         get {
             return this.fileNameField;
         }
         set {
             this.fileNameField = value;
+        }
+    }
+    
+    /// <remarks/>
+    public string FileExtension {
+        get {
+            return this.fileExtensionField;
+        }
+        set {
+            this.fileExtensionField = value;
         }
     }
     
@@ -600,34 +654,12 @@ public partial class MediaDTO {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool FileSizeSpecified {
+    public string FileContentType {
         get {
-            return this.fileSizeFieldSpecified;
+            return this.fileContentTypeField;
         }
         set {
-            this.fileSizeFieldSpecified = value;
-        }
-    }
-    
-    /// <remarks/>
-    public int Id {
-        get {
-            return this.idField;
-        }
-        set {
-            this.idField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool IdSpecified {
-        get {
-            return this.idFieldSpecified;
-        }
-        set {
-            this.idFieldSpecified = value;
+            this.fileContentTypeField = value;
         }
     }
 }
@@ -637,73 +669,30 @@ public partial class MediaDTO {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Dominos.WCFService.DTO")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
 public partial class ShoppingCartDTO {
     
-    private ProductDTO productField;
-    
-    private int productIdField;
-    
-    private bool productIdFieldSpecified;
-    
-    private int quantityField;
-    
-    private bool quantityFieldSpecified;
+    private int idField;
     
     private int userIdField;
     
-    private bool userIdFieldSpecified;
+    private int productIdField;
+    
+    private int quantityField;
+    
+    private string productTitleField;
+    
+    private System.Nullable<int> productImageIdField;
+    
+    private decimal productPriceField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public ProductDTO Product {
+    public int Id {
         get {
-            return this.productField;
+            return this.idField;
         }
         set {
-            this.productField = value;
-        }
-    }
-    
-    /// <remarks/>
-    public int ProductId {
-        get {
-            return this.productIdField;
-        }
-        set {
-            this.productIdField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool ProductIdSpecified {
-        get {
-            return this.productIdFieldSpecified;
-        }
-        set {
-            this.productIdFieldSpecified = value;
-        }
-    }
-    
-    /// <remarks/>
-    public int Quantity {
-        get {
-            return this.quantityField;
-        }
-        set {
-            this.quantityField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool QuantitySpecified {
-        get {
-            return this.quantityFieldSpecified;
-        }
-        set {
-            this.quantityFieldSpecified = value;
+            this.idField = value;
         }
     }
     
@@ -718,13 +707,53 @@ public partial class ShoppingCartDTO {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool UserIdSpecified {
+    public int ProductId {
         get {
-            return this.userIdFieldSpecified;
+            return this.productIdField;
         }
         set {
-            this.userIdFieldSpecified = value;
+            this.productIdField = value;
+        }
+    }
+    
+    /// <remarks/>
+    public int Quantity {
+        get {
+            return this.quantityField;
+        }
+        set {
+            this.quantityField = value;
+        }
+    }
+    
+    /// <remarks/>
+    public string ProductTitle {
+        get {
+            return this.productTitleField;
+        }
+        set {
+            this.productTitleField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    public System.Nullable<int> ProductImageId {
+        get {
+            return this.productImageIdField;
+        }
+        set {
+            this.productImageIdField = value;
+        }
+    }
+    
+    /// <remarks/>
+    public decimal ProductPrice {
+        get {
+            return this.productPriceField;
+        }
+        set {
+            this.productPriceField = value;
         }
     }
 }
@@ -825,18 +854,10 @@ public partial class AddShoppingCartCompletedEventArgs : System.ComponentModel.A
     }
     
     /// <remarks/>
-    public bool AddShoppingCartResult {
+    public bool Result {
         get {
             this.RaiseExceptionIfNecessary();
             return ((bool)(this.results[0]));
-        }
-    }
-    
-    /// <remarks/>
-    public bool AddShoppingCartResultSpecified {
-        get {
-            this.RaiseExceptionIfNecessary();
-            return ((bool)(this.results[1]));
         }
     }
 }
@@ -859,18 +880,36 @@ public partial class SetShoppingCartQuantityCompletedEventArgs : System.Componen
     }
     
     /// <remarks/>
-    public bool SetShoppingCartQuantityResult {
+    public bool Result {
         get {
             this.RaiseExceptionIfNecessary();
             return ((bool)(this.results[0]));
         }
     }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.81.0")]
+public delegate void SetShoppingCartQuantityByIdCompletedEventHandler(object sender, SetShoppingCartQuantityByIdCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.81.0")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class SetShoppingCartQuantityByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal SetShoppingCartQuantityByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
     
     /// <remarks/>
-    public bool SetShoppingCartQuantityResultSpecified {
+    public bool Result {
         get {
             this.RaiseExceptionIfNecessary();
-            return ((bool)(this.results[1]));
+            return ((bool)(this.results[0]));
         }
     }
 }
@@ -923,6 +962,32 @@ public partial class GetProductImageWithoutBinaryCompletedEventArgs : System.Com
         get {
             this.RaiseExceptionIfNecessary();
             return ((MediaDTO)(this.results[0]));
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.81.0")]
+public delegate void LoginCompletedEventHandler(object sender, LoginCompletedEventArgs e);
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.81.0")]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+public partial class LoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    
+    private object[] results;
+    
+    internal LoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState) {
+        this.results = results;
+    }
+    
+    /// <remarks/>
+    public UserDTO Result {
+        get {
+            this.RaiseExceptionIfNecessary();
+            return ((UserDTO)(this.results[0]));
         }
     }
 }

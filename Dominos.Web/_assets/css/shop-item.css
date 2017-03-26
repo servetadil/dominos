@@ -46,3 +46,27 @@ footer {
 .mt-35{
     margin-top: 35px;
 }
+
+.detail-price{
+    font-size: 29px;
+}
+
+
+
+#ajax-container {
+  height: 400px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display:none;
+}
+.ajax-loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -32px; /* -1 * image width / 2 */
+  margin-top: -32px; /* -1 * image height / 2 */
+  width: 50px;
+}
